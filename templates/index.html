@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>斗六舊城漫遊</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="header">
+        <button class="back-button" onclick="showHome()">返回首頁</button>
+        <h1>斗六舊城漫遊</h1>
+        <p>探索歷史 • 體驗文化 • 感受生活</p>
+    </div>
+
+    <div class="container">
+        {% block content %}
+        <div id="home" class="main-content active">
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h1>探索斗六舊城之美</h1>
+                    <p class="hero-description">一趟穿越時空的文化之旅，帶您品味在地特色、感受歷史風華</p>
+                </div>
+            </div>
+
+            <div class="features-section">
+                <div class="feature-card">
+                    <i class="fas fa-utensils"></i>
+                    <h2>在地美食</h2>
+                    <p>從傳統小吃到創新料理，探索斗六的味覺記憶。每一道佳餚都訴說著這座城市的故事。</p>
+                    <a href="{{ url_for('food') }}" class="feature-link">探索美食 <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-landmark"></i>
+                    <h2>文化景點</h2>
+                    <p>漫步在歷史建築之間，感受日治時期的建築之美，體驗在地文化的深厚底蘊。</p>
+                    <a href="{{ url_for('culture') }}" class="feature-link">探索景點 <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-store"></i>
+                    <h2>特色商店</h2>
+                    <p>走訪百年老店與特色商鋪，發現傳統工藝與現代創意的完美融合。</p>
+                    <a href="{{ url_for('shopping') }}" class="feature-link">探索商店 <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h2>關於斗六舊城</h2>
+                <p>斗六舊城區是一個充滿歷史與人文氣息的地方，從清朝時期即為雲林地區的政經中心。這裡保留了許多具有歷史價值的建築，如日治時期的行啟記念館、百年福德宮等，同時也孕育了豐富的在地美食文化。</p>
+                <p>透過這個網站，我們希望能夠帶領大家深入了解斗六舊城的魅力，體驗在地文化，品味美食，感受這座城市的獨特韻味。</p>
+            </div>
+        </div>
+        {% endblock %}
+    </div>
+
+    <script>
+        function showCategory(category) {
+            document.querySelectorAll('.main-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(category).classList.add('active');
+            document.querySelector('.back-button').style.display = 'block';
+        }
+
+        function showHome() {
+            document.querySelectorAll('.main-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById('home').classList.add('active');
+            document.querySelector('.back-button').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

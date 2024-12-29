@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}斗六舊城漫遊{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="{{ url_for('index') }}">
+                <i class="fas fa-map-marked-alt"></i>
+                斗六舊城漫遊
+            </a>
+        </div>
+        <button class="nav-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="{{ url_for('index') }}" class="nav-link {% if request.endpoint == 'index' %}active{% endif %}">
+                    <i class="fas fa-home"></i> 首頁
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url_for('food') }}" class="nav-link {% if request.endpoint == 'food' %}active{% endif %}">
+                    <i class="fas fa-utensils"></i> 美食地圖
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url_for('culture') }}" class="nav-link {% if request.endpoint == 'culture' %}active{% endif %}">
+                    <i class="fas fa-landmark"></i> 文化景點
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url_for('shopping') }}" class="nav-link {% if request.endpoint == 'shopping' %}active{% endif %}">
+                    <i class="fas fa-store"></i> 特色商店
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="header">
+        <h1>斗六舊城漫遊</h1>
+        <p>探索歷史 • 體驗文化 • 感受生活</p>
+    </div>
+
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+
+    {% block scripts %}
+    <script>
+        document.querySelector('.nav-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+    </script>
+    {% endblock %}
+</body>
+</html>

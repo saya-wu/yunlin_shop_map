@@ -1,0 +1,552 @@
+/* Navigation Styles */
+.navbar {
+    background-color: #C7B7A3;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.nav-brand {
+    display: inline-block;
+    margin-right: 2rem;
+}
+
+.nav-brand a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-brand i {
+    font-size: 1.8rem;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 1rem;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+.nav-link i {
+    font-size: 1.2rem;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.nav-link.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    font-weight: bold;
+}
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+/* Animation for mobile menu */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #C7B7A3;
+        flex-direction: column;
+        padding: 1rem;
+        gap: 0.5rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .nav-menu.active {
+        display: flex;
+        animation: slideDown 0.3s ease-out forwards;
+    }
+
+    .nav-link {
+        padding: 0.75rem 1rem;
+    }
+}
+
+@font-face {
+    font-family: '華康行書體';
+    src: url('https://example.com/your-font-path.ttf') format('truetype');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: '華康行書體', "Microsoft JhengHei", sans-serif;
+}
+
+body {
+    background-color: #F8F4E1;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in forwards;
+}
+
+.header {
+    text-align: center;
+    padding: 40px 0;
+    background-color: #C7B7A3;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: relative;
+    transform: translateY(-20px);
+    opacity: 0;
+    animation: slideDown 0.8s ease-out forwards;
+}
+
+.header h1 {
+    font-size: 2.5em;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.header p {
+    color: white;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out 0.5s forwards;
+}
+
+.main-content {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.main-content.active {
+    display: block;
+    animation: slideUpFade 0.6s ease-out forwards;
+}
+
+.shop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.shop-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.shop-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.shop-card h3 {
+    color: #DEAC80;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 5px;
+    position: relative;
+}
+
+.shop-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #DEAC80;
+    transition: width 0.3s ease-out;
+}
+
+.shop-card:hover h3::after {
+    width: 100%;
+}
+
+.shop-card .history {
+    color: #A0937D;
+    font-size: 0.9em;
+    margin: 10px 0;
+    line-height: 1.5;
+}
+
+.shop-card .speciality {
+    color: #e67e22;
+    font-weight: bold;
+    margin: 10px 0;
+    transform: translateX(-10px);
+    opacity: 0;
+    animation: slideRight 0.5s ease-out 0.3s forwards;
+}
+
+.shop-card .speciality::before {
+    content: "招牌：";
+    color: #666;
+    font-weight: normal;
+}
+
+.category-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.category-button {
+    padding: 15px 30px;
+    background-color: #C7B7A3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 1.1em;
+    position: relative;
+    overflow: hidden;
+}
+
+.category-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.category-button:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+.category-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(199, 183, 163, 0.4);
+}
+
+.category-button.active {
+    background-color: #b3a089;
+}
+
+.back-button {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    padding: 10px 20px;
+    background-color: #c7b7a3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.back-button:hover {
+    background-color: #b3a089;
+    transform: translateX(-3px);
+}
+
+.shop-tag {
+    display: inline-block;
+    padding: 4px 8px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    font-size: 0.8em;
+    margin-right: 5px;
+    color: #666;
+    transition: all 0.3s ease;
+}
+
+.shop-tag:hover {
+    background-color: #DEAC80;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.category-title {
+    text-align: center;
+    margin: 20px 0;
+    color: #B99470;
+    font-size: 1.8em;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* 首頁特色樣式 */
+.hero-section {
+    background-color: #F8F4E1;
+    padding: 4rem 2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-out;
+}
+
+.hero-content h1 {
+    font-size: 2.5rem;
+    color: #B99470;
+    margin-bottom: 1rem;
+    animation: slideUp 0.8s ease-out;
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+    animation: slideUp 0.8s ease-out 0.2s;
+}
+
+.features-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+    margin-bottom: 3rem;
+}
+
+.feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card i {
+    font-size: 3rem;
+    color: #C7B7A3;
+    margin-bottom: 1.5rem;
+}
+
+.feature-card h2 {
+    color: #B99470;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.feature-card p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.feature-link {
+    display: inline-flex;
+    align-items: center;
+    color: #C7B7A3;
+    text-decoration: none;
+    font-weight: bold;
+    gap: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.feature-link:hover {
+    color: #B99470;
+}
+
+.feature-link i {
+    font-size: 1rem;
+    margin-bottom: 0;
+    transition: transform 0.3s ease;
+}
+
+.feature-link:hover i {
+    transform: translateX(5px);
+}
+
+.about-section {
+    background-color: #F8F4E1;
+    padding: 3rem 2rem;
+    border-radius: 10px;
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.about-section h2 {
+    color: #B99470;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.about-section p {
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 動畫效果 */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-description {
+        font-size: 1.1rem;
+    }
+
+    .features-section {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+
+    .about-section {
+        padding: 2rem 1rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideRight {
+    from {
+        transform: translateX(-10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .shop-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .category-buttons {
+        flex-direction: column;
+    }
+
+    .category-button {
+        width: 100%;
+    }
+}
