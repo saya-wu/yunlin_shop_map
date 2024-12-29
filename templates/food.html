@@ -3,32 +3,48 @@
 {% block title %}斗六舊城漫遊 - 美食地圖{% endblock %}
 
 {% block content %}
-<div class="main-content active">
-    <h2 class="category-title">在地美食饗宴</h2>
-    <div class="shop-grid">
-        <div class="shop-card">
-            <h3>騷仙草</h3>
-            <div class="history">提供清涼降火飲品</div>
-            <div class="speciality">仙草茶</div>
-            <span class="shop-tag">季節性飲品</span>
-            <span class="shop-tag">天然手工製作</span>
-        </div>
+<div class="page-header">
+    <h1>美食地圖</h1>
+    <p>探索斗六在地特色美食，品嚐傳統小吃與創新料理</p>
+</div>
 
-        <div class="shop-card">
-            <h3>老街碗粿</h3>
-            <div class="history">營業超過90年，是當地人從小吃到大的老字號小吃店</div>
-            <div class="speciality">蛋飯、關東煮</div>
-            <span class="shop-tag">老字號</span>
-            <span class="shop-tag">傳統小吃</span>
+<div class="food-grid">
+    {% for item in items %}
+    <div class="food-card">
+        {% if item.image %}
+        <div class="food-image">
+            <img src="{{ url_for('static', filename='images/' + item.image) }}" alt="{{ item.title }}">
         </div>
-
-        <div class="shop-card">
-            <h3>臺米菜飯TAIMIRICE</h3>
-            <div class="history">座落於復古紅磚老屋內，營造出懷舊氛圍</div>
-            <div class="speciality">高麗菜飯、酸菜陳醋木耳</div>
-            <span class="shop-tag">懷舊氛圍</span>
-            <span class="shop-tag">在地料理</span>
+        {% endif %}
+        <div class="food-info">
+            <h2>{{ item.title }}</h2>
+            {% if item.categories %}
+            <div class="categories">
+                {% for category in item.categories %}
+                <span class="category-tag">{{ category }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+            <div class="details">
+                {% if item.address %}
+                <p><i class="fas fa-map-marker-alt"></i> {{ item.address }}</p>
+                {% endif %}
+                {% if item.phone %}
+                <p><i class="fas fa-phone"></i> {{ item.phone }}</p>
+                {% endif %}
+                {% if item.opening_hours %}
+                <p><i class="fas fa-clock"></i> {{ item.opening_hours }}</p>
+                {% endif %}
+            </div>
+            <div class="food-content">
+                {{ item.content | safe }}
+            </div>
         </div>
     </div>
+    {% else %}
+    <div class="no-content">
+        <p>目前還沒有美食資訊，敬請期待！</p>
+    </div>
+    {% endfor %}
 </div>
 {% endblock %}

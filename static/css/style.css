@@ -74,11 +74,136 @@
     padding: 0.5rem;
 }
 
-/* Animation for mobile menu */
-@keyframes slideDown {
+/* 首頁特色樣式 */
+.hero-section {
+    background-color: #C7B7A3;
+    padding: 6rem 2rem;
+    text-align: center;
+    margin: -2rem -2rem 3rem -2rem;
+    position: relative;
+    color: white;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    animation: slideUp 0.8s ease-out;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+    animation: slideUp 0.8s ease-out 0.2s;
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    animation: slideUp 0.8s ease-out 0.4s;
+}
+
+.features-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+    margin-bottom: 3rem;
+}
+
+.feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card i {
+    font-size: 3rem;
+    color: #C7B7A3;
+    margin-bottom: 1.5rem;
+}
+
+.feature-card h2 {
+    color: #B99470;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.feature-card p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.feature-link {
+    display: inline-flex;
+    align-items: center;
+    color: #C7B7A3;
+    text-decoration: none;
+    font-weight: bold;
+    gap: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.feature-link:hover {
+    color: #B99470;
+}
+
+.feature-link i {
+    font-size: 1rem;
+    margin-bottom: 0;
+    transition: transform 0.3s ease;
+}
+
+.feature-link:hover i {
+    transform: translateX(5px);
+}
+
+.about-section {
+    background-color: #F8F4E1;
+    padding: 3rem 2rem;
+    border-radius: 10px;
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.about-section h2 {
+    color: #B99470;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.about-section p {
+    color: #666;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 動畫效果 */
+@keyframes slideUp {
     from {
         opacity: 0;
-        transform: translateY(-10px);
+        transform: translateY(20px);
     }
     to {
         opacity: 1;
@@ -86,13 +211,12 @@
     }
 }
 
-/* Mobile Responsive */
+/* 響應式設計 */
 @media (max-width: 768px) {
     .navbar {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1rem;
     }
 
     .nav-toggle {
@@ -117,8 +241,25 @@
         animation: slideDown 0.3s ease-out forwards;
     }
 
-    .nav-link {
-        padding: 0.75rem 1rem;
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .subtitle {
+        font-size: 1.2rem;
+    }
+
+    .hero-description {
+        font-size: 1rem;
+    }
+
+    .features-section {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+
+    .about-section {
+        padding: 2rem 1rem;
     }
 }
 
@@ -548,5 +689,165 @@ body {
 
     .category-button {
         width: 100%;
+    }
+}
+
+.food-grid, .culture-grid, .shopping-grid {
+    display: grid;
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.food-card, .culture-card, .shop-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.food-card:hover, .culture-card:hover, .shop-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.food-image, .culture-image, .shop-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.food-image img, .culture-image img, .shop-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.food-info, .culture-info, .shop-info {
+    padding: 1.5rem;
+}
+
+.food-info h2, .culture-info h2, .shop-info h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.category-tag {
+    background-color: #C7B7A3;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.875rem;
+}
+
+.details {
+    margin-bottom: 1.5rem;
+    color: #666;
+}
+
+.details p {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.details i {
+    color: #C7B7A3;
+    width: 20px;
+}
+
+.food-content, .culture-content, .shop-content {
+    color: #444;
+    line-height: 1.6;
+}
+
+.food-content h1, .culture-content h1, .shop-content h1 {
+    font-size: 1.75rem;
+    color: #333;
+    margin: 1.5rem 0 1rem;
+}
+
+.food-content h2, .culture-content h2, .shop-content h2 {
+    font-size: 1.25rem;
+    color: #444;
+    margin: 1.25rem 0 0.75rem;
+}
+
+.food-content p, .culture-content p, .shop-content p {
+    margin-bottom: 1rem;
+}
+
+.food-content ul, .culture-content ul, .shop-content ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.food-content li, .culture-content li, .shop-content li {
+    margin-bottom: 0.5rem;
+}
+
+.page-header {
+    text-align: center;
+    padding: 3rem 1rem;
+    background-color: #C7B7A3;
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.page-header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.no-content {
+    text-align: center;
+    padding: 3rem;
+    color: #666;
+}
+
+@media (min-width: 768px) {
+    .food-grid, .culture-grid, .shopping-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .food-grid, .culture-grid, .shopping-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 767px) {
+    .food-grid, .culture-grid, .shopping-grid {
+        padding: 1rem;
+    }
+    
+    .page-header {
+        padding: 2rem 1rem;
+    }
+    
+    .page-header h1 {
+        font-size: 2rem;
+    }
+    
+    .page-header p {
+        font-size: 1rem;
     }
 }

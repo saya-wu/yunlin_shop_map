@@ -3,25 +3,51 @@
 {% block title %}斗六舊城漫遊 - 特色商店{% endblock %}
 
 {% block content %}
-<div class="main-content active">
-    <h2 class="category-title">特色商店街</h2>
-    <div class="shop-grid">
-        <div class="shop-card">
-            <h3>晉安藥房</h3>
-            <div class="history">這家藥房傳承四代，與崇德青草藥行共同經營，專注於提供傳統中藥材和手工熬煮的草本茶飲</div>
-            <div class="speciality">青草茶、白芷</div>
-            <span class="shop-tag">傳統中藥材</span>
-            <span class="shop-tag">手工熬煮草本茶飲</span>
-        </div>
+<div class="page-header">
+    <h1>特色商店</h1>
+    <p>探索斗六的特色店家，發現在地文創與傳統工藝</p>
+</div>
 
-        <div class="shop-card">
-            <h3>斗六四代目麥芽酥</h3>
-            <div class="history">堅持每日手炒麥芽，選用雲林在地優質花生，製作出入口即化、不黏牙的麥芽酥</div>
-            <div class="speciality">麥芽糖</div>
-            <span class="shop-tag">傳承四代</span>
-            <span class="shop-tag">手工製作</span>
-            <span class="shop-tag">強調健康</span>
+<div class="shopping-grid">
+    {% for item in items %}
+    <div class="shop-card">
+        {% if item.image %}
+        <div class="shop-image">
+            <img src="{{ url_for('static', filename='images/' + item.image) }}" alt="{{ item.title }}">
+        </div>
+        {% endif %}
+        <div class="shop-info">
+            <h2>{{ item.title }}</h2>
+            {% if item.categories %}
+            <div class="categories">
+                {% for category in item.categories %}
+                <span class="category-tag">{{ category }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+            <div class="details">
+                {% if item.address %}
+                <p><i class="fas fa-map-marker-alt"></i> {{ item.address }}</p>
+                {% endif %}
+                {% if item.phone %}
+                <p><i class="fas fa-phone"></i> {{ item.phone }}</p>
+                {% endif %}
+                {% if item.opening_hours %}
+                <p><i class="fas fa-clock"></i> {{ item.opening_hours }}</p>
+                {% endif %}
+                {% if item.website %}
+                <p><i class="fas fa-globe"></i> <a href="{{ item.website }}" target="_blank">官方網站</a></p>
+                {% endif %}
+            </div>
+            <div class="shop-content">
+                {{ item.content | safe }}
+            </div>
         </div>
     </div>
+    {% else %}
+    <div class="no-content">
+        <p>目前還沒有商店資訊，敬請期待！</p>
+    </div>
+    {% endfor %}
 </div>
 {% endblock %}

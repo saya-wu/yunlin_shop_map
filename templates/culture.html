@@ -3,25 +3,48 @@
 {% block title %}斗六舊城漫遊 - 文化景點{% endblock %}
 
 {% block content %}
-<div class="main-content active">
-    <h2 class="category-title">文化景點巡禮</h2>
-    <div class="shop-grid">
-        <div class="shop-card">
-            <h3>斗六行啟記念館</h3>
-            <div class="history">建於1926年，為紀念日本裕仁皇太子（後來的昭和天皇）於1923年訪台而興建</div>
-            <div class="speciality">不定期市集</div>
-            <span class="shop-tag">文化活動空間</span>
-            <span class="shop-tag">日式紅磚黑瓦</span>
-            <span class="shop-tag">木構造設計</span>
-        </div>
+<div class="page-header">
+    <h1>文化景點</h1>
+    <p>探索斗六的文化遺產，感受歷史風華</p>
+</div>
 
-        <div class="shop-card">
-            <h3>福德宮</h3>
-            <div class="history">主祀福德正神（土地公）。該廟歷史悠久，外牆鑲嵌多塊清代古碑，佩戴「宰相帽」，全台僅有三尊</div>
-            <div class="speciality">福德宮</div>
-            <span class="shop-tag">古廟</span>
-            <span class="shop-tag">文化古蹟</span>
+<div class="culture-grid">
+    {% for item in items %}
+    <div class="culture-card">
+        {% if item.image %}
+        <div class="culture-image">
+            <img src="{{ url_for('static', filename='images/' + item.image) }}" alt="{{ item.title }}">
+        </div>
+        {% endif %}
+        <div class="culture-info">
+            <h2>{{ item.title }}</h2>
+            {% if item.categories %}
+            <div class="categories">
+                {% for category in item.categories %}
+                <span class="category-tag">{{ category }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+            <div class="details">
+                {% if item.address %}
+                <p><i class="fas fa-map-marker-alt"></i> {{ item.address }}</p>
+                {% endif %}
+                {% if item.opening_hours %}
+                <p><i class="fas fa-clock"></i> {{ item.opening_hours }}</p>
+                {% endif %}
+                {% if item.admission %}
+                <p><i class="fas fa-ticket-alt"></i> {{ item.admission }}</p>
+                {% endif %}
+            </div>
+            <div class="culture-content">
+                {{ item.content | safe }}
+            </div>
         </div>
     </div>
+    {% else %}
+    <div class="no-content">
+        <p>目前還沒有文化景點資訊，敬請期待！</p>
+    </div>
+    {% endfor %}
 </div>
 {% endblock %}
