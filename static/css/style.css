@@ -897,3 +897,140 @@ body {
 .food-card, .culture-card, .shop-card {
     position: relative;
 }
+
+.story-section {
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.story-content {
+    margin-bottom: 20px;
+    transition: max-height 0.3s ease-out;
+    overflow: hidden;
+}
+
+.story-content.hidden {
+    display: none;
+}
+
+.story-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: #C7B7A3;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    margin-left: auto;
+}
+
+.story-toggle-btn:hover {
+    background-color: #b3a089;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.story-toggle-btn i {
+    font-size: 1rem;
+}
+
+.story-content h3 {
+    color: #B99470;
+    margin-bottom: 15px;
+}
+
+.story-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.story-header {
+    position: relative;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.story-header h1 {
+    color: #B99470;
+    margin: 0;
+    padding: 20px 0;
+}
+
+.back-btn {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #C7B7A3;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: #C7B7A3;
+    color: white;
+}
+
+.story-main-content {
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.story-image {
+    margin: -30px -30px 30px -30px;
+}
+
+.story-image img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+.story-text {
+    line-height: 1.8;
+    color: #333;
+}
+
+.story-text h2 {
+    color: #B99470;
+    margin: 30px 0 15px;
+}
+
+.story-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background-color: #C7B7A3;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.story-btn:hover {
+    background-color: #b3a089;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.story-btn i {
+    font-size: 1rem;
+}

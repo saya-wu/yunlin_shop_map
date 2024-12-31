@@ -5,6 +5,10 @@ opening_hours: "06:00-21:00"
 admission: "免費參拜"
 categories: ["古廟", "文化古蹟"]
 image: fude_index.jpg
+website: "https://www.facebook.com/jncd055328995/?locale=zh_TW"
+audio: fude.mp3
+id: fude
+story: true
 ---
 
 ## 廟宇歷史

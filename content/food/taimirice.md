@@ -5,6 +5,10 @@ phone: "0968-643-649"
 opening_hours: "09:00-16:00"
 categories: ["古法料理", "在地特色"]
 image: taimirice_index.jpg
+website: "https://www.facebook.com/jncd055328995/?locale=zh_TW"
+audio: taimirice.mp3
+id: taimirice
+story: true
 ---
 
 ## 店家簡介

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }} - 延伸閱讀{% endblock %}
+
+{% block content %}
+<div class="story-page">
+    <div class="story-header">
+        <a href="{{ url_for(category) }}" class="back-btn">
+            <i class="fas fa-arrow-left"></i>
+            返回
+        </a>
+        <h1>{{ title }}</h1>
+    </div>
+    
+    <div class="story-main-content">
+        {% if image %}
+        <div class="story-image">
+            <img src="{{ url_for('static', filename='images/' + image) }}" alt="{{ title }}">
+        </div>
+        {% endif %}
+        
+        <div class="story-text">
+            {{ story_content | safe }}
+        </div>
+    </div>
+</div>
+{% endblock %}

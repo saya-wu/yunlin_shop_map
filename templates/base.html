@@ -51,6 +51,22 @@
         document.querySelector('.nav-toggle').addEventListener('click', function() {
             document.querySelector('.nav-menu').classList.toggle('active');
         });
+
+        function toggleStory(button) {
+            const storySection = button.parentElement;
+            const storyContent = storySection.querySelector('.story-content');
+            const toggleText = button.querySelector('.toggle-text');
+            
+            if (storyContent.classList.contains('hidden')) {
+                storyContent.classList.remove('hidden');
+                toggleText.textContent = '收起內容';
+                button.title = '收起內容';
+            } else {
+                storyContent.classList.add('hidden');
+                toggleText.textContent = '展開更多';
+                button.title = '延伸閱讀';
+            }
+        }
     </script>
     {% endblock %}
 </body>

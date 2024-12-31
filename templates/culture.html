@@ -38,6 +38,14 @@
             </div>
             <div class="culture-content">
                 {{ item.content | safe }}
+                {% if item.story %}
+                <div class="story-section">
+                    <a href="{{ url_for('story', category='culture', item_name=item.id if item.id else item.title|lower|replace(' ', '_')) }}" class="story-btn">
+                        <i class="fas fa-book-open"></i>
+                        <span>閱讀更多</span>
+                    </a>
+                </div>
+                {% endif %}
             </div>
             {% if item.audio %}
             <a href="{{ url_for('audio_guide', category='culture', item_name=item.id if item.id else item.title|lower|replace(' ', '_')) }}" class="audio-guide-btn" title="聆聽景點故事">

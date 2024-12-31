@@ -5,8 +5,10 @@ phone: "04-3456-7890"
 opening_hours: "09:00-21:00"
 categories: ["中藥材", "傳統商店"]
 image: jinan_index.jpeg
-
-website: "https://example.com/jingan"
+website: "https://www.facebook.com/jncd055328995/?locale=zh_TW"
+audio: jinan_story.mp3
+id: jinan
+story: true
 ---
 
 

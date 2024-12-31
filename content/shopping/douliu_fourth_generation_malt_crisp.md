@@ -1,11 +1,14 @@
 ---
-title: 斗六四代目麥芽酥
-address: 雲林縣斗六市中山路
-phone: "04-4567-8901"
-opening_hours: "10:00-19:00"
-categories: ["伴手禮", "傳統美食"]
+title: 斗六第四代麥芽酥
+address: 雲林縣斗六市太平路7號
+phone: 05-532-2023
+opening_hours: 週一至週日 08:30-21:00
+categories: ["伴手禮", "糕餅"]
 image: douliu_fourth_generation_malt_crisp_index.jpg
-website: "https://example.com/maltose"
+website: "https://www.facebook.com/Gr.0979737557"
+audio: douliu_fourth_generation_malt_crisp_story.mp3
+id: douliu_fourth_generation_malt_crisp
+story: true
 ---
 
 ## 店家簡介
