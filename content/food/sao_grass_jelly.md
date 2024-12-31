@@ -5,7 +5,7 @@ phone: "05-5376676"
 opening_hours: "11:00-21:00"
 categories: ["傳統甜品", "在地特色"]
 image: sao_grass_jelly_index.jpg
-website: "https://www.facebook.com/jncd055328995/?locale=zh_TW"
+website: "https://www.facebook.com/profile.php?id=100063549892617"
 audio: sao_grass_jelly_story.mp3
 id: sao_grass_jelly
 story: true

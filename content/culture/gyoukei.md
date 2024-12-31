@@ -6,7 +6,7 @@ opening_hours: "09:00-17:00"
 admission: "免費參觀"
 categories: ["歷史建築", "文化場館"]
 image: gyoukei_index.jpg
-website: "https://www.facebook.com/Xingchi.Public"
+website: "https://www.facebook.com/Xingchi.Public https://www.dl.gov.tw/zh-tw/News_Content.aspx?n=14463&sms=1&s=dl"
 audio: gyoukei.mp3
 id: gyoukei
 story: true

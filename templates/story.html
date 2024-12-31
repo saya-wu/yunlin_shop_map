@@ -19,9 +19,58 @@
         </div>
         {% endif %}
         
+        {% if audio %}
+        <div class="audio-player">
+            <audio id="storyAudio" autoplay>
+                <source src="{{ url_for('static', filename='audio/' + audio) }}" type="audio/mpeg">
+                您的瀏覽器不支援音訊播放。
+            </audio>
+            <div class="audio-controls">
+                <button id="playPauseBtn" class="audio-control-btn">
+                    <i class="fas fa-pause"></i>
+                </button>
+                <div class="audio-progress">
+                    <div id="progressBar" class="progress-bar"></div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        
         <div class="story-text">
             {{ story_content | safe }}
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{% if audio %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const audio = document.getElementById('storyAudio');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const progressBar = document.getElementById('progressBar');
+        
+        playPauseBtn.addEventListener('click', function() {
+            if (audio.paused) {
+                audio.play();
+                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            } else {
+                audio.pause();
+                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+            }
+        });
+        
+        audio.addEventListener('timeupdate', function() {
+            const progress = (audio.currentTime / audio.duration) * 100;
+            progressBar.style.width = progress + '%';
+        });
+        
+        audio.addEventListener('ended', function() {
+            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+        });
+    });
+</script>
+{% endif %}
 {% endblock %}
