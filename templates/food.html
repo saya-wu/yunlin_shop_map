@@ -35,6 +35,9 @@
                 {% if item.opening_hours %}
                 <p><i class="fas fa-clock"></i> {{ item.opening_hours }}</p>
                 {% endif %}
+                {% if item.website %}
+                <p><i class="fas fa-globe"></i> <a href="{{ item.website }}" target="_blank">官方網站</a></p>
+                {% endif %}
             </div>
             <div class="food-content">
                 {{ item.content | safe }}

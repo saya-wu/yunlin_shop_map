@@ -35,6 +35,9 @@
                 {% if item.admission %}
                 <p><i class="fas fa-ticket-alt"></i> {{ item.admission }}</p>
                 {% endif %}
+                {% if item.website %}
+                <p><i class="fas fa-globe"></i> <a href="{{ item.website }}" target="_blank">官方網站</a></p>
+                {% endif %}
             </div>
             <div class="culture-content">
                 {{ item.content | safe }}
