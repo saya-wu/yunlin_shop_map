@@ -1,16 +1,15 @@
 ---
-title: 晉安藥房
+title: 晉安中藥房
 address: 雲林縣斗六市中山路
-phone: "04-3456-7890"
-opening_hours: "09:00-21:00"
-categories: ["中藥材", "傳統商店"]
-image: jinan_index.jpeg
+phone: 05-532-2023
+opening_hours: 週一至週六 08:30-21:00
+categories: ["中藥行", "傳統商店"]
+image: jangan.jpeg
 website: "https://www.facebook.com/jncd055328995/?locale=zh_TW"
-audio: jinan_story.mp3
-id: jinan
+audio: jingan.m4a
+id: jingan
 story: true
 ---
-
 
 ## 店家簡介
 
@@ -29,4 +28,4 @@ story: true
 
 ## 延伸閱讀
 
-test
+文案

@@ -4,9 +4,9 @@ address: 雲林縣斗六市中山路
 opening_hours: "06:00-21:00"
 admission: "免費參拜"
 categories: ["古廟", "文化古蹟"]
-image: fude_index.jpg
-website: "https://www.facebook.com/jncd055328995/?locale=zh_TW"
-audio: fude.m4a
+image: fude.jpeg
+website: "https://www.facebook.com/profile.php?id=100080100021290"
+audio: fude.mp3
 id: fude
 story: true
 ---
@@ -48,3 +48,10 @@ story: true
 麒麟感受到鈴鐺
 從廟中化身顯形
 出現在旅人面前
+
+道：
+［你是收到祝福的孩子，我的鈴鐺指引你到此地，你一定與此地有解不開的緣，你若可以得到此廟的祝福，那此地一定會給你一個啟示］
+（給他抽平安符）
+（抽到後）
+你是千年難遇有福之人 
+或許可以幫我找回我的主人，你願意幫助我嗎？

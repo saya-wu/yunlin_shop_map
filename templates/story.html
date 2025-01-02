@@ -20,7 +20,7 @@
         {% endif %}
         
         {% if audio %}
-        <div class="audio-player">
+        <div class="audio-section">
             <audio id="storyAudio" autoplay>
                 <source src="{{ url_for('static', filename='audio/' + audio) }}" type="audio/mpeg">
                 您的瀏覽器不支援音訊播放。

@@ -5,8 +5,8 @@ phone:
 opening_hours: "09:00-17:00"
 admission: "免費參觀"
 categories: ["歷史建築", "文化場館"]
-image: gyoukei_index.jpg
-website: "https://www.facebook.com/Xingchi.Public https://www.dl.gov.tw/zh-tw/News_Content.aspx?n=14463&sms=1&s=dl"
+image: gyoukei.jpeg
+website: "https://www.facebook.com/Xingchi.Public"
 audio: gyoukei.mp3
 id: gyoukei
 story: true
@@ -26,3 +26,7 @@ story: true
 ## 現今用途
 
 目前作為文化展演空間，定期舉辦藝文活動、市集與展覽，是斗六市重要的文化交流平台。每週末都有不同的主題市集，歡迎民眾參與。
+
+## 延伸閱讀
+
+文案

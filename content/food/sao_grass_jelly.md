@@ -4,8 +4,8 @@ address: 雲林縣斗六市中華路15號
 phone: "05-5376676"
 opening_hours: "11:00-21:00"
 categories: ["傳統甜品", "在地特色"]
-image: sao_grass_jelly_index.jpg
-website: "https://www.facebook.com/profile.php?id=100063549892617"
+image: sao_grass_jelly.jpeg
+website: "https://www.facebook.com/hotgrassjelly"
 audio: sao_grass_jelly_story.mp3
 id: sao_grass_jelly
 story: true
@@ -17,7 +17,7 @@ story: true
 
 ## 推薦美食
 
-- 招牌騷仙草
+- 招牌仙草茶
 - 彈Q手工芋圓
 - 滑嫩豆花
 - 濃香杏仁茶
@@ -25,3 +25,12 @@ story: true
 ## 特色介紹
 
 店家嚴選上等食材，堅持新鮮現煮現賣的理念，以獨特的調配手法，讓每一道甜品都能呈現最佳風味。特別是在寒冷的冬天，這裡的溫熱甜品更是許多在地人推薦的首選。每一碗甜品都展現了傳統工法與創新口味的完美結合，為傳統台式甜品注入新的生命力。
+
+## 延伸閱讀
+
+旅人答應後
+（一瞬   穿越回古代）
+旅人與麒麟開啟了一段復古懷舊之旅
+
+旅人摸到平安符中有指引徽章
+於是他跟麒麟根據指引找到一個地方

@@ -4,8 +4,8 @@ address: 雲林縣斗六市府前街45號
 phone: "0968-643-649"
 opening_hours: "09:00-16:00"
 categories: ["古法料理", "在地特色"]
-image: taimirice_index.jpg
-website: "https://www.facebook.com/jncd055328995/?locale=zh_TW"
+image: taimirice.jpeg
+website: "https://www.facebook.com/taimirice"
 audio: taimirice.mp3
 id: taimirice
 story: true
@@ -25,3 +25,7 @@ story: true
 ## 特色介紹
 
 店家堅持選用當地新鮮食材，以傳統柴燒方式烹煮高麗菜飯，讓每一口都能感受到自然與土地的美好。紅磚屋的歷史建築特色與古早味的料理相互輝映，吸引了不少喜愛台灣文化的顧客前來品嚐。此外，店家也提供解酒湯等特色料理，深受在地居民與遊客的喜愛。
+
+## 延伸閱讀
+
+文案
