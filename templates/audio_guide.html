@@ -14,7 +14,7 @@
             <button id="playButton" class="play-button">
                 <i class="fas fa-play"></i>
             </button>
-            <audio id="audioPlayer">
+            <audio id="audioPlayer" preload="auto" loop>
                 <source src="{{ url_for('static', filename='audio/' + item.audio) }}" type="audio/mpeg">
                 您的瀏覽器不支持音頻播放
             </audio>
@@ -96,6 +96,7 @@ h1 {
 
 audio {
     width: 100%;
+    display: none;  /* 隱藏原生播放器 */
 }
 
 .play-message {
@@ -109,36 +110,57 @@ audio {
 
 {% block scripts %}
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+(function() {
     const audio = document.getElementById('audioPlayer');
     const playButton = document.getElementById('playButton');
     const playIcon = playButton.querySelector('i');
-    
-    // 播放/暫停切換
+
+    function forceSafariPlayAudio() {
+        audio.load(); // iOS 9 需要額外 load
+        audio.play().then(() => {
+            playIcon.className = 'fas fa-pause';
+        }).catch(error => {
+            console.log('播放失敗:', error);
+            playIcon.className = 'fas fa-play';
+        });
+    }
+
+    // 監聽各種事件來追蹤音訊狀態
+    audio.addEventListener('loadstart', () => console.log('loadstart'), false);
+    audio.addEventListener('loadeddata', () => console.log('loadeddata'), false);
+    audio.addEventListener('loadedmetadata', () => console.log('loadedmetadata'), false);
+    audio.addEventListener('canplay', () => console.log('canplay'), false);
+    audio.addEventListener('play', () => {
+        console.log('play');
+        playIcon.className = 'fas fa-pause';
+        // 當音訊能夠播放後，移除觸摸事件監聽
+        window.removeEventListener('touchstart', forceSafariPlayAudio, false);
+    }, false);
+    audio.addEventListener('playing', () => console.log('playing'), false);
+    audio.addEventListener('pause', () => {
+        console.log('pause');
+        playIcon.className = 'fas fa-play';
+    }, false);
+    audio.addEventListener('ended', () => {
+        console.log('ended');
+        playIcon.className = 'fas fa-play';
+    }, false);
+
+    // 播放按鈕點擊事件
     playButton.addEventListener('click', function() {
         if (audio.paused) {
-            audio.play();
-            playIcon.className = 'fas fa-pause';
+            forceSafariPlayAudio();
         } else {
             audio.pause();
             playIcon.className = 'fas fa-play';
         }
     });
-    
-    // 當音頻結束時
-    audio.addEventListener('ended', function() {
-        playIcon.className = 'fas fa-play';
-    });
-    
-    // 當音頻暫停時
-    audio.addEventListener('pause', function() {
-        playIcon.className = 'fas fa-play';
-    });
-    
-    // 當音頻播放時
-    audio.addEventListener('play', function() {
-        playIcon.className = 'fas fa-pause';
-    });
-});
+
+    // 監聽觸摸事件來觸發自動播放
+    window.addEventListener('touchstart', forceSafariPlayAudio, false);
+
+    // 嘗試自動播放
+    forceSafariPlayAudio();
+})();
 </script>
 {% endblock %}
