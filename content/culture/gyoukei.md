@@ -1,15 +1,17 @@
 ---
-title: 斗六行啟記念館
 address: 雲林縣斗六市太平路
-phone: 
-opening_hours: "09:00-17:00"
-admission: "免費參觀"
-categories: ["歷史建築", "文化場館"]
-image: gyoukei.jpeg
-website: "https://www.facebook.com/Xingchi.Public"
-audio: gyoukei.m4a
+admission: 免費參觀
+audio: gyoukei.mp3
+categories:
+- 歷史建築
+- 文化場館
 id: gyoukei
+image: gyoukei.jpeg
+opening_hours: 09:00-17:00
+phone: null
 story: true
+title: 斗六行啟記念館
+website: https://www.facebook.com/Xingchi.Public
 ---
 
 ## 建築歷史

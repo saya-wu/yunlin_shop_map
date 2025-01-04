@@ -1,14 +1,16 @@
 ---
-title: 福德宮
 address: 雲林縣斗六市中山路
-opening_hours: "06:00-21:00"
-admission: "免費參拜"
-categories: ["古廟", "文化古蹟"]
-image: fude.jpeg
-website: "https://www.facebook.com/profile.php?id=100080100021290"
-audio: fude_a.m4a
+admission: 免費參拜
+audio: fude_a.mp3
+categories:
+- 古廟
+- 文化古蹟
 id: fude
+image: fude.jpeg
+opening_hours: 06:00-21:00
 story: true
+title: 福德宮
+website: https://www.facebook.com/profile.php?id=100080100021290
 ---
 
 ## 廟宇歷史

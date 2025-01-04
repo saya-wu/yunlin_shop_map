@@ -10,32 +10,14 @@
     </div>
 
     <div class="player-container">
-        <!-- 原始音頻控件 -->
-        <audio id="audio" preload="auto" controls>
-            <source src="{{ url_for('static', filename='audio/' + item.audio) }}" type="audio/x-m4a">
-            您的瀏覽器不支持音頻播放
-        </audio>
-
-        <!-- 自定義控制 -->
-        <div class="custom-controls">
-            <button id="rewindBtn" class="control-button" title="倒退5秒">
-                <i class="fas fa-backward"></i>
-            </button>
-            <button id="playBtn" class="control-button" title="播放/暫停">
+        <div class="custom-player">
+            <button id="playButton" class="play-button">
                 <i class="fas fa-play"></i>
             </button>
-            <button id="forwardBtn" class="control-button" title="前進5秒">
-                <i class="fas fa-forward"></i>
-            </button>
-            <div class="volume-control">
-                <i class="fas fa-volume-up"></i>
-                <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.8">
-            </div>
-        </div>
-
-        <!-- 字幕顯示 -->
-        <div class="subtitle-container">
-            <div id="subtitleDisplay" class="subtitle-text"></div>
+            <audio id="audioPlayer">
+                <source src="{{ url_for('static', filename='audio/' + item.audio) }}" type="audio/mpeg">
+                您的瀏覽器不支持音頻播放
+            </audio>
         </div>
     </div>
 </div>
@@ -54,226 +36,108 @@
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
 }
 
 .back-button {
-    color: #666;
     text-decoration: none;
+    color: #666;
     margin-right: 15px;
+    font-size: 1.2em;
 }
 
 .back-button:hover {
     color: #333;
 }
 
-.player-header h1 {
+h1 {
     margin: 0;
     font-size: 1.5em;
     color: #333;
 }
 
 .player-container {
-    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.custom-player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.play-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.play-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+}
+
+.play-button:active {
+    transform: scale(0.95);
 }
 
 audio {
     width: 100%;
-    margin-bottom: 20px;
 }
 
-.custom-controls {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin: 20px 0;
-}
-
-.control-button {
-    width: 50px;
-    height: 50px;
-    border: none;
-    border-radius: 50%;
-    background: #4CAF50;
-    color: white;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-}
-
-.control-button:hover {
-    transform: scale(1.1);
-    background: #45a049;
-}
-
-.control-button:active {
-    transform: scale(0.95);
-}
-
-.volume-control {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-left: 20px;
-}
-
-.volume-control input[type="range"] {
-    width: 100px;
-}
-
-.subtitle-container {
-    margin-top: 30px;
-    padding: 20px;
-    background: #f5f5f5;
-    border-radius: 10px;
-    min-height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.subtitle-text {
-    font-size: 1.2em;
-    color: #333;
+.play-message {
     text-align: center;
-    line-height: 1.5;
+    color: #666;
+    margin-top: 10px;
+    font-size: 0.9em;
 }
 </style>
-
 {% endblock %}
 
-{% block extra_js %}
+{% block scripts %}
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const audio = document.getElementById('audio');
-    const playBtn = document.getElementById('playBtn');
-    const rewindBtn = document.getElementById('rewindBtn');
-    const forwardBtn = document.getElementById('forwardBtn');
-    const volumeSlider = document.getElementById('volumeSlider');
-    const subtitleDisplay = document.getElementById('subtitleDisplay');
+    const audio = document.getElementById('audioPlayer');
+    const playButton = document.getElementById('playButton');
+    const playIcon = playButton.querySelector('i');
     
-    let subtitles = [];
-
-    // 設定預設音量
-    audio.volume = 0.8;
-
-    // 播放/暫停控制
-    playBtn.addEventListener('click', function() {
+    // 播放/暫停切換
+    playButton.addEventListener('click', function() {
         if (audio.paused) {
             audio.play();
-            playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            playIcon.className = 'fas fa-pause';
         } else {
             audio.pause();
-            playBtn.innerHTML = '<i class="fas fa-play"></i>';
+            playIcon.className = 'fas fa-play';
         }
     });
-
-    // 音頻狀態改變時更新播放按鈕
-    audio.addEventListener('play', function() {
-        playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+    
+    // 當音頻結束時
+    audio.addEventListener('ended', function() {
+        playIcon.className = 'fas fa-play';
     });
-
+    
+    // 當音頻暫停時
     audio.addEventListener('pause', function() {
-        playBtn.innerHTML = '<i class="fas fa-play"></i>';
+        playIcon.className = 'fas fa-play';
     });
-
-    // 倒退5秒
-    rewindBtn.addEventListener('click', function() {
-        audio.currentTime = Math.max(0, audio.currentTime - 5);
-    });
-
-    // 前進5秒
-    forwardBtn.addEventListener('click', function() {
-        audio.currentTime = Math.min(audio.duration, audio.currentTime + 5);
-    });
-
-    // 音量控制
-    volumeSlider.addEventListener('input', function() {
-        audio.volume = this.value;
-    });
-
-    // 加載字幕
-    function loadSubtitles() {
-        const srtUrl = "{{ url_for('static', filename='subtitles/' + item.audio.replace('.m4a', '.srt').replace('.mp3', '.srt')) }}";
-        fetch(srtUrl)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Subtitle file not found');
-                }
-                return response.text();
-            })
-            .then(text => {
-                subtitles = parseSRT(text);
-            })
-            .catch(error => {
-                console.log('Error loading subtitles:', error);
-                subtitleDisplay.textContent = '無字幕';
-            });
-    }
-
-    // 解析SRT格式
-    function parseSRT(srtText) {
-        const subtitles = [];
-        const blocks = srtText.trim().split('\n\n');
-        
-        blocks.forEach(block => {
-            const lines = block.split('\n');
-            if (lines.length >= 3) {
-                const timeMatch = lines[1].match(/(\d{2}:\d{2}:\d{2},\d{3}) --> (\d{2}:\d{2}:\d{2},\d{3})/);
-                if (timeMatch) {
-                    subtitles.push({
-                        start: timeToSeconds(timeMatch[1]),
-                        end: timeToSeconds(timeMatch[2]),
-                        text: lines.slice(2).join('\n')
-                    });
-                }
-            }
-        });
-        
-        return subtitles;
-    }
-
-    // 時間字符串轉換為秒數
-    function timeToSeconds(timeStr) {
-        const [time, ms] = timeStr.split(',');
-        const [hours, minutes, seconds] = time.split(':');
-        return parseInt(hours) * 3600 + parseInt(minutes) * 60 + parseInt(seconds) + parseInt(ms) / 1000;
-    }
-
-    // 更新字幕顯示
-    function updateSubtitles(currentTime) {
-        const currentSubtitle = subtitles.find(sub => 
-            currentTime >= sub.start && currentTime <= sub.end
-        );
-        
-        if (currentSubtitle) {
-            subtitleDisplay.textContent = currentSubtitle.text;
-        } else {
-            subtitleDisplay.textContent = '';
-        }
-    }
-
-    // 音頻事件監聽
-    audio.addEventListener('loadedmetadata', loadSubtitles);
-    audio.addEventListener('timeupdate', function() {
-        updateSubtitles(audio.currentTime);
-    });
-
-    // 鍵盤控制
-    document.addEventListener('keydown', function(e) {
-        switch(e.code) {
-            case 'ArrowLeft':
-                e.preventDefault();
-                rewindBtn.click();
-                break;
-            case 'ArrowRight':
-                e.preventDefault();
-                forwardBtn.click();
-                break;
-        }
+    
+    // 當音頻播放時
+    audio.addEventListener('play', function() {
+        playIcon.className = 'fas fa-pause';
     });
 });
 </script>

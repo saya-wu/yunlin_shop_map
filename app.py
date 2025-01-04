@@ -5,6 +5,26 @@ import os
 
 app = Flask(__name__)
 
+# 添加 MIME types 設定
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+app.config['MIME_TYPES'] = {
+    '.m4a': 'audio/aac',  # iPhone 語音備忘錄實際是 AAC 格式
+    '.aac': 'audio/aac',
+    '.mp3': 'audio/mpeg'
+}
+
+# 設定日誌記錄
+app.logger.setLevel(0)
+
+@app.after_request
+def add_header(response):
+    if 'audio' in response.mimetype:
+        response.headers['Accept-Ranges'] = 'bytes'
+        response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+        response.headers['Pragma'] = 'no-cache'
+        response.headers['Expires'] = '0'
+    return response
+
 def load_content(directory):
     items = []
     content_dir = os.path.join(os.path.dirname(__file__), 'content', directory)
@@ -79,24 +99,6 @@ def audio_guide(category, item_name):
             if 'id' not in metadata:
                 metadata['id'] = item_name
                 
-            # 檢查音頻文件格式
-            audio_filename = metadata.get('audio', '')
-            if audio_filename:
-                # 優先使用 m4a 格式
-                m4a_filename = audio_filename.rsplit('.', 1)[0] + '.m4a'
-                mp3_filename = audio_filename
-                
-                # 檢查文件是否存在
-                m4a_path = os.path.join(app.static_folder, 'audio', m4a_filename)
-                mp3_path = os.path.join(app.static_folder, 'audio', mp3_filename)
-                
-                if os.path.exists(m4a_path):
-                    metadata['audio'] = m4a_filename
-                elif os.path.exists(mp3_path):
-                    metadata['audio'] = mp3_filename
-                else:
-                    return f"找不到音頻文件：{m4a_filename} 或 {mp3_filename}", 404
-                    
             return render_template('audio_guide.html', item=metadata)
     
     return "內容格式錯誤", 500

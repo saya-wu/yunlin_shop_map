@@ -1,14 +1,16 @@
 ---
-title: 斗六第四代麥芽酥
 address: 雲林縣斗六市太平路7號
-phone: 05-532-2023
-opening_hours: 週一至週日 08:30-21:00
-categories: ["伴手禮", "糕餅"]
-image: douliu_fourth_generation_malt_crisp.jpeg
-website: "https://www.facebook.com/Gr.0979737557"
-audio: douliu_fourth_generation_malt_crisp.m4a
+audio: douliu_fourth_generation_malt_crisp.mp3
+categories:
+- 伴手禮
+- 糕餅
 id: douliu_fourth_generation_malt_crisp
+image: douliu_fourth_generation_malt_crisp.jpeg
+opening_hours: 週一至週日 08:30-21:00
+phone: 05-532-2023
 story: true
+title: 斗六第四代麥芽酥
+website: https://www.facebook.com/Gr.0979737557
 ---
 
 ## 店家歷史

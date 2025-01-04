@@ -1,14 +1,16 @@
 ---
-title: 臺米菜飯TAIMIRICE
 address: 雲林縣斗六市府前街45號
-phone: "0968-643-649"
-opening_hours: "09:00-16:00"
-categories: ["古法料理", "在地特色"]
-image: taimirice.jpeg
-website: "https://www.facebook.com/taimirice"
-audio: taimirice.m4a
+audio: taimirice.mp3
+categories:
+- 古法料理
+- 在地特色
 id: taimirice
+image: taimirice.jpeg
+opening_hours: 09:00-16:00
+phone: 0968-643-649
 story: true
+title: 臺米菜飯TAIMIRICE
+website: https://www.facebook.com/taimirice
 ---
 
 ## 店家簡介

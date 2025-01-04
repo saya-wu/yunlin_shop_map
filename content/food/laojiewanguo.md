@@ -1,14 +1,16 @@
 ---
-title: 老街碗粿
 address: 雲林縣斗六市太平路7號
-phone: 05-532-2023
-opening_hours: "10:30-14:00"
-categories: ["老字號", "在地美食"]
-image: laojiewanguo_index.jpeg
-audio: laojiewanguo.m4a
+audio: laojiewanguo.mp3
+categories:
+- 老字號
+- 在地美食
 id: laojiewanguo
+image: laojiewanguo_index.jpeg
+opening_hours: 10:30-14:00
+phone: 05-532-2023
 story: true
-website: "https://www.google.com.tw/maps/place/%E8%80%81%@@@%E8%A1%97%E7%A2%97%E7%B2%BF/@23.7082044,120.5407231,18z/data=!4m6!3m5!1s0x346ec83b6d4d6d65:0x84946171efc71597!8m2!3d23.7082001!4d120.5414796!16s%2Fg%2F1wyc2234?authuser=1&entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoJLDEwMjExMjMzSAFQAw%3D%3D"
+title: 老街碗粿
+website: https://www.google.com.tw/maps/place/%E8%80%81%@@@%E8%A1%97%E7%A2%97%E7%B2%BF/@23.7082044,120.5407231,18z/data=!4m6!3m5!1s0x346ec83b6d4d6d65:0x84946171efc71597!8m2!3d23.7082001!4d120.5414796!16s%2Fg%2F1wyc2234?authuser=1&entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoJLDEwMjExMjMzSAFQAw%3D%3D
 ---
 
 ## 店家簡介

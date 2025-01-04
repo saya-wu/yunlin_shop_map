@@ -1,14 +1,16 @@
 ---
-title: 騷仙草甜品專賣店-斗六店
 address: 雲林縣斗六市中華路15號
-phone: "05-5376676"
-opening_hours: "11:00-21:00"
-categories: ["傳統甜品", "在地特色"]
-image: sao_grass_jelly.jpeg
-website: "https://www.facebook.com/hotgrassjelly"
-audio: sao_grass_jelly_story.m4a
+audio: sao_grass_jelly_story.mp3
+categories:
+- 傳統甜品
+- 在地特色
 id: sao_grass_jelly
+image: sao_grass_jelly.jpeg
+opening_hours: 11:00-21:00
+phone: 05-5376676
 story: true
+title: 騷仙草甜品專賣店-斗六店
+website: https://www.facebook.com/hotgrassjelly
 ---
 
 ## 店家簡介
