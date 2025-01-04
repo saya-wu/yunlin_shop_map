@@ -21,17 +21,18 @@
         
         {% if audio %}
         <div class="audio-section">
-            <audio id="storyAudio" autoplay>
+            <button id="playButton" class="audio-player-btn">
+                <i class="fas fa-play"></i>
+            </button>
+            <audio id="audioPlayer" preload="auto">
                 <source src="{{ url_for('static', filename='audio/' + audio) }}" type="audio/mpeg">
-                您的瀏覽器不支援音訊播放。
+                您的瀏覽器不支援音訊播放
             </audio>
-            <div class="audio-controls">
-                <button id="playPauseBtn" class="audio-control-btn">
-                    <i class="fas fa-pause"></i>
-                </button>
-                <div class="audio-progress">
-                    <div id="progressBar" class="progress-bar"></div>
-                </div>
+        </div>
+
+        <div id="tapOverlay" class="tap-overlay">
+            <div class="tap-hint">
+                點擊任意位置開始播放
             </div>
         </div>
         {% endif %}
@@ -41,36 +42,148 @@
         </div>
     </div>
 </div>
+
+<style>
+.story-page {
+    position: relative;
+    min-height: 100vh;
+}
+
+.tap-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+}
+
+.tap-hint {
+    color: white;
+    font-size: 1.8em;
+    padding: 25px 50px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: pulse 2s infinite;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.audio-section {
+    text-align: center;
+    margin: 20px 0;
+    padding: 20px;
+}
+
+.audio-player-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 1.2em;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+
+.audio-player-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+}
+
+.audio-player-btn:active {
+    transform: scale(0.95);
+}
+
+.audio-player-btn i {
+    font-size: 1.4em;
+    margin-left: 3px;
+}
+
+audio {
+    display: none;
+}
+</style>
 {% endblock %}
 
 {% block scripts %}
 {{ super() }}
 {% if audio %}
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const audio = document.getElementById('storyAudio');
-        const playPauseBtn = document.getElementById('playPauseBtn');
-        const progressBar = document.getElementById('progressBar');
-        
-        playPauseBtn.addEventListener('click', function() {
-            if (audio.paused) {
-                audio.play();
-                playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-            } else {
-                audio.pause();
-                playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-            }
-        });
-        
-        audio.addEventListener('timeupdate', function() {
-            const progress = (audio.currentTime / audio.duration) * 100;
-            progressBar.style.width = progress + '%';
-        });
-        
-        audio.addEventListener('ended', function() {
-            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-        });
+document.addEventListener('DOMContentLoaded', function() {
+    const audio = document.getElementById('audioPlayer');
+    const playButton = document.getElementById('playButton');
+    const playIcon = playButton.querySelector('i');
+    const overlay = document.getElementById('tapOverlay');
+    let hasFirstTap = false;
+
+    function hideOverlay() {
+        overlay.style.display = 'none';
+    }
+
+    function handleTap(event) {
+        if (!hasFirstTap) {
+            audio.load();
+            audio.play().then(() => {
+                playIcon.className = 'fas fa-pause';
+                hideOverlay();
+                hasFirstTap = true;
+            }).catch(error => {
+                console.log('播放失敗:', error);
+                playIcon.className = 'fas fa-play';
+            });
+        }
+    }
+
+    overlay.addEventListener('click', handleTap);
+
+    playButton.addEventListener('click', function(event) {
+        event.stopPropagation();
+        if (!audio.paused) {
+            audio.pause();
+            playIcon.className = 'fas fa-play';
+        } else if (hasFirstTap) {
+            audio.play();
+            playIcon.className = 'fas fa-pause';
+        }
     });
+
+    audio.addEventListener('play', () => {
+        playIcon.className = 'fas fa-pause';
+    });
+
+    audio.addEventListener('pause', () => {
+        playIcon.className = 'fas fa-play';
+    });
+
+    audio.addEventListener('ended', () => {
+        playIcon.className = 'fas fa-play';
+    });
+
+    // 監聽用戶互動事件來觸發播放
+    document.addEventListener('touchstart', handleTap, { once: true });
+    document.addEventListener('click', handleTap, { once: true });
+});
 </script>
 {% endif %}
 {% endblock %}

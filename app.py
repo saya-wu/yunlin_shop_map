@@ -119,13 +119,21 @@ def story(category, item_name):
             
             # 分割主要內容和故事內容
             if '## 延伸閱讀' in md:
-                _, story_content = md.split('## 延伸閱讀', 1)
+                main_content, story_content = md.split('## 延伸閱讀', 1)
+                metadata['content'] = markdown(main_content.strip(), extensions=['extra'])
                 metadata['story_content'] = markdown(story_content.strip(), extensions=['extra'])
             else:
-                return "找不到延伸閱讀內容", 404
+                metadata['content'] = markdown(md.strip(), extensions=['extra'])
+                metadata['story_content'] = ''
             
             metadata['category'] = category
-            return render_template('story.html', **metadata)
+            metadata['id'] = item_name
+            
+            # 根據請求的 Accept 頭部決定返回哪個模板
+            if request.accept_mimetypes.best_match(['text/html', 'audio/mpeg']) == 'audio/mpeg':
+                return render_template('audio_guide.html', item=metadata)
+            else:
+                return render_template('story.html', **metadata)
     
     return "內容格式錯誤", 500
 

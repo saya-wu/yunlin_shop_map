@@ -1,10 +1,174 @@
 {% extends "base.html" %}
 
 {% block content %}
+<style>
+/* 重置基礎樣式 */
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+/* 重置 container 樣式 */
+.container {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+    width: 100% !important;
+    height: 100vh !important;
+    overflow: hidden !important;
+    position: relative !important;
+    opacity: 1 !important;
+}
+
+/* 覆蓋層樣式 */
+#tapOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+}
+
+.tap-hint {
+    color: white;
+    font-size: 1.8em;
+    padding: 25px 50px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: pulse 2s infinite;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* 音頻播放器樣式 */
+.audio-player {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    z-index: 9999;
+}
+
+.player-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 10000;
+}
+
+.back-button {
+    text-decoration: none;
+    color: #666;
+    margin-right: 15px;
+    font-size: 1.2em;
+    z-index: 10001;
+    padding: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+.back-button:hover {
+    color: #333;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+h1 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #333;
+    flex: 1;
+    text-align: center;
+    padding-right: 65px; /* 平衡返回按鈕的寬度 */
+}
+
+.player-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-player {
+    text-align: center;
+}
+
+.play-button {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    font-size: 2em;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+
+.play-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+}
+
+.play-button:active {
+    transform: scale(0.95);
+}
+
+audio {
+    display: none;
+}
+
+/* 隱藏導航欄 */
+.navbar {
+    display: none !important;
+}
+</style>
+
+<div id="tapOverlay">
+    <div class="tap-hint">
+        點擊任意位置開始播放
+    </div>
+</div>
+
 <div class="audio-player">
     <div class="player-header">
         <a href="javascript:history.back()" class="back-button">
-            <i class="fas fa-arrow-left"></i> 返回
+            <i class="fas fa-arrow-left"></i>
         </a>
         <h1>{{ item.title }}</h1>
     </div>
@@ -14,153 +178,101 @@
             <button id="playButton" class="play-button">
                 <i class="fas fa-play"></i>
             </button>
-            <audio id="audioPlayer" preload="auto" loop>
+            <audio id="audioPlayer" preload="auto">
                 <source src="{{ url_for('static', filename='audio/' + item.audio) }}" type="audio/mpeg">
                 您的瀏覽器不支持音頻播放
             </audio>
         </div>
     </div>
 </div>
-
-<style>
-.audio-player {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background: #fff;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    border-radius: 10px;
-}
-
-.player-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.back-button {
-    text-decoration: none;
-    color: #666;
-    margin-right: 15px;
-    font-size: 1.2em;
-}
-
-.back-button:hover {
-    color: #333;
-}
-
-h1 {
-    margin: 0;
-    font-size: 1.5em;
-    color: #333;
-}
-
-.player-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px 0;
-}
-
-.custom-player {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-
-.play-button {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-color: #007bff;
-    border: none;
-    color: white;
-    font-size: 1.5em;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-    transition: all 0.3s ease;
-}
-
-.play-button:hover {
-    background-color: #0056b3;
-    transform: scale(1.1);
-}
-
-.play-button:active {
-    transform: scale(0.95);
-}
-
-audio {
-    width: 100%;
-    display: none;  /* 隱藏原生播放器 */
-}
-
-.play-message {
-    text-align: center;
-    color: #666;
-    margin-top: 10px;
-    font-size: 0.9em;
-}
-</style>
 {% endblock %}
 
 {% block scripts %}
 <script>
-(function() {
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM 已載入');
+    
     const audio = document.getElementById('audioPlayer');
     const playButton = document.getElementById('playButton');
     const playIcon = playButton.querySelector('i');
+    const overlay = document.getElementById('tapOverlay');
+    let hasFirstTap = false;
 
-    function forceSafariPlayAudio() {
-        audio.load(); // iOS 9 需要額外 load
-        audio.play().then(() => {
-            playIcon.className = 'fas fa-pause';
-        }).catch(error => {
-            console.log('播放失敗:', error);
-            playIcon.className = 'fas fa-play';
-        });
+    console.log('元素已獲取:', {
+        audio: !!audio,
+        playButton: !!playButton,
+        playIcon: !!playIcon,
+        overlay: !!overlay
+    });
+
+    function hideOverlay() {
+        overlay.style.display = 'none';
     }
 
-    // 監聽各種事件來追蹤音訊狀態
-    audio.addEventListener('loadstart', () => console.log('loadstart'), false);
-    audio.addEventListener('loadeddata', () => console.log('loadeddata'), false);
-    audio.addEventListener('loadedmetadata', () => console.log('loadedmetadata'), false);
-    audio.addEventListener('canplay', () => console.log('canplay'), false);
-    audio.addEventListener('play', () => {
-        console.log('play');
-        playIcon.className = 'fas fa-pause';
-        // 當音訊能夠播放後，移除觸摸事件監聽
-        window.removeEventListener('touchstart', forceSafariPlayAudio, false);
-    }, false);
-    audio.addEventListener('playing', () => console.log('playing'), false);
-    audio.addEventListener('pause', () => {
-        console.log('pause');
-        playIcon.className = 'fas fa-play';
-    }, false);
-    audio.addEventListener('ended', () => {
-        console.log('ended');
-        playIcon.className = 'fas fa-play';
-    }, false);
+    function handleTap(event) {
+        console.log('點擊事件觸發', event.type);
+        if (!hasFirstTap) {
+            audio.load();
+            audio.play().then(() => {
+                console.log('播放成功');
+                playIcon.className = 'fas fa-pause';
+                hideOverlay();
+                hasFirstTap = true;
+            }).catch(error => {
+                console.log('播放失敗:', error);
+                playIcon.className = 'fas fa-play';
+            });
+        }
+    }
 
-    // 播放按鈕點擊事件
-    playButton.addEventListener('click', function() {
-        if (audio.paused) {
-            forceSafariPlayAudio();
-        } else {
+    overlay.addEventListener('click', handleTap);
+
+    playButton.addEventListener('click', function(event) {
+        console.log('播放按鈕點擊');
+        event.stopPropagation();
+        if (!audio.paused) {
             audio.pause();
             playIcon.className = 'fas fa-play';
+        } else if (hasFirstTap) {
+            audio.play();
+            playIcon.className = 'fas fa-pause';
         }
     });
 
-    // 監聽觸摸事件來觸發自動播放
-    window.addEventListener('touchstart', forceSafariPlayAudio, false);
+    audio.addEventListener('play', () => {
+        console.log('音頻開始播放');
+        playIcon.className = 'fas fa-pause';
+    });
+
+    audio.addEventListener('pause', () => {
+        console.log('音頻暫停');
+        playIcon.className = 'fas fa-play';
+    });
+
+    audio.addEventListener('ended', () => {
+        console.log('音頻播放結束');
+        playIcon.className = 'fas fa-play';
+    });
 
     // 嘗試自動播放
-    forceSafariPlayAudio();
-})();
+    setTimeout(attemptAutoPlay, 1000);
+    
+    // 監聽用戶互動事件來觸發播放
+    document.addEventListener('touchstart', handleTap, { once: true });
+    document.addEventListener('click', handleTap, { once: true });
+
+    function attemptAutoPlay() {
+        console.log('嘗試自動播放');
+        audio.load();
+        audio.play().then(() => {
+            console.log('自動播放成功');
+            playIcon.className = 'fas fa-pause';
+            hideOverlay();
+            hasFirstTap = true;
+        }).catch(error => {
+            console.log('自動播放失敗，等待用戶點擊:', error);
+        });
+    }
+});
 </script>
 {% endblock %}
