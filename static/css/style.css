@@ -100,6 +100,7 @@
     margin-bottom: 1.5rem;
     opacity: 0.9;
     animation: slideUp 0.8s ease-out 0.2s;
+    color: black;
 }
 
 .hero-description {
@@ -264,15 +265,15 @@
 }
 
 @font-face {
-    font-family: '華康行書體';
-    src: url('https://example.com/your-font-path.ttf') format('truetype');
+    font-family: '思源宋體';
+    src: url('../font/GenSenRounded2TW-M.otf') format('truetype');
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: '華康行書體', "Microsoft JhengHei", sans-serif;
+    font-family: '思源宋體', "Microsoft JhengHei", sans-serif;
 }
 
 body {
