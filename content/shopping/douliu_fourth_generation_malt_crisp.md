@@ -6,7 +6,7 @@ opening_hours: 週一至週日 08:30-21:00
 categories: ["伴手禮", "糕餅"]
 image: douliu_fourth_generation_malt_crisp.jpeg
 website: "https://www.facebook.com/Gr.0979737557"
-audio: douliu_fourth_generation_malt_crisp.mp3
+audio: douliu_fourth_generation_malt_crisp.m4a
 id: douliu_fourth_generation_malt_crisp
 story: true
 ---
@@ -28,17 +28,20 @@ story: true
 
 ## 延伸閱讀
 
-故事情節
+兒時鎮上
+寒風總讓人感到冰冷刺骨
+冬日時常得風寒的麒麟
+喉嚨疼痛、咳嗽不止
+主人總用那溫暖的雙手
+為他準備一杯特別的飲品
+“來，喝了這杯雪梨麥芽”
+主人的聲音如同冬日的暖陽，溫暖柔和
+麥芽糖溶解在熱水中
+淡淡的甜香味在空氣中彌漫開來
+將所有的寒冷都驅散了
+“這個能滋潤你的喉嚨，讓你感覺好一些”
+主人總輕聲叮囑著
 
-旅人走進這家老店
-一陣麥香撲鼻而來
-店內的木製櫃檯和古老的秤具
-彷彿訴說著歲月的故事
-師傅正在揉捏著麥芽糖
-熟練的手法讓人著迷
-
-突然間
-麒麟的鈴鐺發出清脆的聲響
-指引著旅人走向後院
-那裡有一個老舊的木箱
-箱子上刻著神秘的符號
+請從旅人拿到的記憶碎片網頁
+導向地圖
+前往 第三個點

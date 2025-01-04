@@ -6,7 +6,7 @@ opening_hours: "09:00-16:00"
 categories: ["古法料理", "在地特色"]
 image: taimirice.jpeg
 website: "https://www.facebook.com/taimirice"
-audio: taimirice.mp3
+audio: taimirice.m4a
 id: taimirice
 story: true
 ---
@@ -28,4 +28,16 @@ story: true
 
 ## 延伸閱讀
 
-文案
+台米菜飯的老闆
+曾在法國學藝
+後來選擇回到家鄉雲林
+用在地食材以及阿嬤的懷舊食譜打造出獨特的料理
+因而創造了台米大飯店
+後來與青創基地合作
+將老屋改造後開了台米菜飯
+食材皆使用本地當天運送
+老闆一直用自己的方式去回饋雲林
+
+請從旅人拿到的記憶碎片網頁
+導向地圖
+前往 第六個點

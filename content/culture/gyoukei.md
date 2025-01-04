@@ -7,7 +7,7 @@ admission: "免費參觀"
 categories: ["歷史建築", "文化場館"]
 image: gyoukei.jpeg
 website: "https://www.facebook.com/Xingchi.Public"
-audio: gyoukei.mp3
+audio: gyoukei.m4a
 id: gyoukei
 story: true
 ---
@@ -29,4 +29,10 @@ story: true
 
 ## 延伸閱讀
 
-文案
+最終
+旅人在行啟紀念館找到麒麟的主人——先知
+麒麟回到主人身旁後
+先知給予旅人祝福與啟示
+和最後一個記憶碎片後
+讓旅人穿越時空隧道
+回道現實世界

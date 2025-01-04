@@ -6,7 +6,7 @@ opening_hours: "11:00-21:00"
 categories: ["傳統甜品", "在地特色"]
 image: sao_grass_jelly.jpeg
 website: "https://www.facebook.com/hotgrassjelly"
-audio: sao_grass_jelly_story.mp3
+audio: sao_grass_jelly_story.m4a
 id: sao_grass_jelly
 story: true
 ---
@@ -28,9 +28,22 @@ story: true
 
 ## 延伸閱讀
 
-旅人答應後
-（一瞬   穿越回古代）
-旅人與麒麟開啟了一段復古懷舊之旅
+從前
+主人常常在麒麟出去玩回來後
+煮給他喝仙草茶
+他曾說
+仙草是一種藥用植物
+清熱解毒、消暑降火
+也寓意著健康吉祥
+是可以讓麒麟增進靈力的解暑聖品呢
+麒麟每每看著先知煮仙草茶
+鍋裡的顏色會隨著煮的時間變化
+越煮越濃，味道也越來越香
+不彷在抵達目的地時來嘗嘗鮮
+或許
+平安符帶我們來這裡
+是想讓你也體驗這份美好
 
-旅人摸到平安符中有指引徽章
-於是他跟麒麟根據指引找到一個地方
+請從旅人拿到的記憶碎片網頁
+導向地圖
+前往 第二個點
