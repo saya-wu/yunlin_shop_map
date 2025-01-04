@@ -37,4 +37,4 @@ website: https://www.facebook.com/Xingchi.Public
 先知給予旅人祝福與啟示
 和最後一個記憶碎片後
 讓旅人穿越時空隧道
-回道現實世界
+回到現實世界
