@@ -1,15 +1,14 @@
 {% extends "base.html" %}
 
-{% block title %}{{ title }} - 延伸閱讀{% endblock %}
-
 {% block content %}
 <div class="story-page">
     <div class="story-header">
-        <a href="{{ url_for(category) }}" class="back-btn">
-            <i class="fas fa-arrow-left"></i>
-            返回
-        </a>
-        <h1>{{ title }}</h1>
+        <div class="back-btn-container">
+            <a href="{{ url_for(category) }}" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                <span>返回</span>
+            </a>
+        </div>
     </div>
     
     <div class="story-main-content">
@@ -47,6 +46,74 @@
 .story-page {
     position: relative;
     min-height: 100vh;
+    padding-top: env(safe-area-inset-top);
+}
+
+.story-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 15px;
+    pointer-events: none;
+}
+
+.back-btn-container {
+    pointer-events: auto;
+}
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #666;
+    font-size: 1em;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.back-btn i {
+    font-size: 1.2em;
+}
+
+.back-btn span {
+    font-size: 1em;
+}
+
+.back-btn:hover {
+    color: #333;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+}
+
+.back-btn:active {
+    transform: translateY(1px);
+}
+
+@media (max-width: 768px) {
+    .story-header {
+        padding: 12px;
+    }
+
+    .back-btn {
+        padding: 8px;
+    }
+
+    .back-btn span {
+        display: none;
+    }
+
+    .back-btn i {
+        font-size: 1.4em;
+    }
 }
 
 .tap-overlay {
@@ -87,6 +154,7 @@
     text-align: center;
     margin: 20px 0;
     padding: 20px;
+    position: relative;
 }
 
 .audio-player-btn {
@@ -103,6 +171,7 @@
     justify-content: center;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+    padding: 0;
 }
 
 .audio-player-btn:hover {
@@ -117,11 +186,32 @@
 
 .audio-player-btn i {
     font-size: 1.4em;
-    margin-left: 3px;
+    line-height: 1;
+    width: 1.4em;
+    height: 1.4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 audio {
     display: none;
+}
+
+@media (max-width: 768px) {
+    .tap-hint {
+        font-size: 1.4em;
+        padding: 20px 40px;
+    }
+
+    .audio-player-btn {
+        width: 50px;
+        height: 50px;
+    }
+
+    .audio-player-btn i {
+        font-size: 1.2em;
+    }
 }
 </style>
 {% endblock %}
