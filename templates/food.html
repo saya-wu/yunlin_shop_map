@@ -73,12 +73,6 @@
                         <span>閱讀更多</span>
                     </a>
                     {% endif %}
-                    {% if item.audio %}
-                    <a href="{{ url_for('audio_guide', category='food', item_name=item.id) }}" class="audio-btn">
-                        <i class="fas fa-headphones"></i>
-                        <span>語音導覽</span>
-                    </a>
-                    {% endif %}
                 </div>
             </div>
         </div>
