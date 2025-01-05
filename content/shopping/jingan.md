@@ -10,7 +10,7 @@ opening_hours: 週一至週六 08:30-21:00
 phone: 05-532-2023
 story: true
 title: 崇德青草藥房
-website: https://www.facebook.com/jncd055328995/?locale=zh_TW
+website: https://maps.app.goo.gl/kKn3DAAKdULa1XA6A
 ---
 
 ## 店家簡介

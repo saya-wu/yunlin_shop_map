@@ -10,7 +10,7 @@ opening_hours: 10:30-18:00
 phone: 09 11759442
 story: true
 title: 融 melting
-website: https://www.facebook.com/people/%E8%9E%8D-melting/61566710774786/?_rdr
+website: https://maps.app.goo.gl/TtGj3PDR3jS1xerN6
 ---
 
 ## 店家簡介
@@ -19,7 +19,7 @@ website: https://www.facebook.com/people/%E8%9E%8D-melting/61566710774786/?_rdr
 
 ## 推薦美食
 
-- 手作冰品
+- 造型霜淇淋
 - 香草醋飲
 - 季節限定甜品
 

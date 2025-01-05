@@ -10,7 +10,7 @@ image: fude.jpeg
 opening_hours: 06:00-21:00
 story: true
 title: 福德宮
-website: https://www.facebook.com/profile.php?id=100080100021290
+website: https://maps.app.goo.gl/frhXYA139oRyrsTh7
 ---
 
 ## 廟宇歷史

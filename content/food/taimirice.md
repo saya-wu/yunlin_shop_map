@@ -10,7 +10,7 @@ opening_hours: 09:00-16:00
 phone: 0968-643-649
 story: true
 title: 臺米菜飯TAIMIRICE
-website: https://www.facebook.com/taimirice
+website: https://maps.app.goo.gl/5Z8UeqeVVCHzYUYz5
 ---
 
 ## 店家簡介

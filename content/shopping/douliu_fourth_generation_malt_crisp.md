@@ -10,7 +10,7 @@ opening_hours: 週一至週日 08:30-21:00
 phone: 05-532-2023
 story: true
 title: 斗六第四代麥芽酥
-website: https://www.facebook.com/Gr.0979737557
+website: https://maps.app.goo.gl/AEnyxxVRxurcex5Q7
 ---
 
 ## 店家歷史

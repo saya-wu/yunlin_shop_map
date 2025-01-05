@@ -10,7 +10,7 @@ opening_hours: 11:00-21:00
 phone: 05-5376676
 story: true
 title: 騷仙草甜品專賣店-斗六店
-website: https://www.facebook.com/hotgrassjelly
+website: https://maps.app.goo.gl/ExSxRjkDY8QvtB2q9
 ---
 
 ## 店家簡介

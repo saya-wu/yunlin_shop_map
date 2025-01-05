@@ -3,6 +3,31 @@
 {% block title %}斗六舊城漫遊 - 美食地圖{% endblock %}
 
 {% block content %}
+<style>
+.audio-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.audio-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.audio-btn i {
+    margin-right: 8px;
+}
+</style>
+
 <div class="page-header">
     <h1>美食地圖</h1>
     <p>探索斗六在地特色美食，品嚐傳統小吃與創新料理</p>
@@ -41,14 +66,20 @@
             </div>
             <div class="food-content">
                 {{ item.content | safe }}
-                {% if item.story %}
-                <div class="story-section">
+                <div class="action-buttons">
+                    {% if item.story %}
                     <a href="{{ url_for('story', category='food', item_name=item.id if item.id else item.title|lower|replace(' ', '_')) }}" class="story-btn">
                         <i class="fas fa-book-open"></i>
                         <span>閱讀更多</span>
                     </a>
+                    {% endif %}
+                    {% if item.audio %}
+                    <a href="{{ url_for('audio_guide', category='food', item_name=item.id) }}" class="audio-btn">
+                        <i class="fas fa-headphones"></i>
+                        <span>語音導覽</span>
+                    </a>
+                    {% endif %}
                 </div>
-                {% endif %}
             </div>
         </div>
     </div>

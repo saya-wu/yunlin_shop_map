@@ -11,7 +11,7 @@ opening_hours: 09:00-17:00
 phone: null
 story: true
 title: 斗六行啟記念館
-website: https://www.facebook.com/Xingchi.Public
+website: https://maps.app.goo.gl/c4nbwvgqNCYSGm9d7
 ---
 
 ## 建築歷史
